@@ -12,7 +12,9 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="197dp">
 
 
         <ImageView
@@ -85,14 +87,14 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp" />
-    </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -20,7 +20,7 @@ public class UserAccountActivity extends AppCompatActivity {
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
             changeEmail, changePassword, sendEmail, remove, signOut;
 
-    private EditText oldEmail, newEmail, password, newPassword;
+    private EditText password, newPassword;
     private ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
