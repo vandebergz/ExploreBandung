@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "678167878124",
+    "firebase_url": "https://mobilappdev-tubes.firebaseio.com",
+    "project_id": "mobilappdev-tubes",
+    "storage_bucket": "mobilappdev-tubes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678167878124:android:d9847da3e2a05e32",
+        "android_client_info": {
+          "package_name": "com.example.evan.explorebandung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678167878124-8i3mt5bqomrpq1rn58j4me2ifp0qj3ol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evan.explorebandung",
+            "certificate_hash": "6c86a462f8c5bac4eebcfb5b88a41861bc52e46f"
+          }
+        },
+        {
+          "client_id": "678167878124-5i5lphn2d6ulqvntjogfeu4j0m0l08a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQEt2UT0QnFkwE-kq9tIbPtuFFd2iFDQc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678167878124-5i5lphn2d6ulqvntjogfeu4j0m0l08a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
