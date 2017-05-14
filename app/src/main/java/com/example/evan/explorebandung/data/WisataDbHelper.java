@@ -54,9 +54,10 @@ public class WisataDbHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
             do {
                 DatabaseModel model = new DatabaseModel();
-                model.setPlace(cursor.getString(0));
-                model.setContact(cursor.getString(1));
-                model.setAddress(cursor.getString(3));
+                model.setId(cursor.getString(0));
+                model.setPlace(cursor.getString(1));
+                model.setAddress(cursor.getString(2));
+                model.setIdWisata(cursor.getString(3));
 
                 modelList.add(model);
             } while (cursor.moveToNext());

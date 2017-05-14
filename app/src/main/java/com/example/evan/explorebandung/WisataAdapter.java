@@ -22,8 +22,8 @@ import static android.R.attr.onClick;
 
 public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder> {
 
-    static   List<DatabaseModel> dbList;
-    static  Context context;
+    static List<DatabaseModel> dbList;
+    static Context context;
     WisataAdapter(Context context, List<DatabaseModel> dbList ){
         this.dbList = new ArrayList<DatabaseModel>();
         this.context = context;
@@ -44,7 +44,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
     @Override
     public void onBindViewHolder(WisataAdapter.ViewHolder holder, int position) {
         holder.name.setText(dbList.get(position).getPlace());
-        holder.contact.setText(dbList.get(position).getContact());
+        holder.wisataid.setText(dbList.get(position).getIdWisata());
     }
 
     @Override
@@ -54,13 +54,13 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView name, contact;
+        public TextView name, wisataid;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            name = (TextView) itemLayoutView
-                    .findViewById(R.id.name_tv);
-            contact = (TextView)itemLayoutView.findViewById(R.id.contact_tv);
+            wisataid = (TextView) itemLayoutView
+                    .findViewById(R.id.wisataid_tv);
+            name = (TextView)itemLayoutView.findViewById(R.id.name_tv);
             itemLayoutView.setOnClickListener(this);
 
         }

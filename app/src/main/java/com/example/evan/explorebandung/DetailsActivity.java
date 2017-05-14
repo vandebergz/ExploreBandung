@@ -20,7 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
     WisataDbHelper helper;
     List<DatabaseModel> dbList;
     int position;
-    TextView tvname,tvcontact,tvaddress;
+    TextView tvname, tvwisataid, tvaddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
         position = bundle.getInt("position");
 
         tvname =(TextView)findViewById(R.id.name);
-        tvcontact =(TextView)findViewById(R.id.contact);
+        tvwisataid =(TextView)findViewById(R.id.wisataid);
         tvaddress =(TextView)findViewById(R.id.address);
         helper = new WisataDbHelper(this);
         dbList= new ArrayList<DatabaseModel>();
@@ -42,10 +42,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         if(dbList.size()>0){
             String name= dbList.get(position).getPlace();
-            String contact=dbList.get(position).getContact();
+            String wisataid=dbList.get(position).getIdWisata();
             String address=dbList.get(position).getAddress();
             tvname.setText(name);
-            tvcontact.setText(contact);
+            tvwisataid.setText(wisataid);
             tvaddress.setText(address);
         }
         Toast.makeText(DetailsActivity.this, dbList.toString(), Toast.LENGTH_LONG);

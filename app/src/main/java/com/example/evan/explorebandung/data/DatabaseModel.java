@@ -5,9 +5,20 @@ package com.example.evan.explorebandung.data;
  */
 
 public class DatabaseModel {
+
+    private String id;
     private String place;
     private String address;
-    private String contact;
+    //private String contact;
+    private String idWisata;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getPlace() {
         return place;
@@ -25,11 +36,19 @@ public class DatabaseModel {
         this.address = address;
     }
 
-    public String getContact() {
+    /*public String getContact() {
         return contact;
     }
 
     public void setContact(String contact) {
         this.contact = contact;
+    }*/
+
+    public String getIdWisata() {
+        return idWisata;
+    }
+
+    public void setIdWisata(String idWisata) {
+        this.idWisata = idWisata;
     }
 }
