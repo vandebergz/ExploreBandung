@@ -23,7 +23,6 @@ public class WisataActivity extends AppCompatActivity {
     List<DatabaseModel> dbList;
     private WisataAdapter mAdapter;
     private SQLiteDatabase mDb;
-    private Button btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class WisataActivity extends AppCompatActivity {
         // Set layout for the RecyclerView, because it's a list we are using the linear layout
         wisataRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // COMPLETED (2) Create a WaitlistDbHelper instance, pass "this" to the constructor
+        // COMPLETED (2) Create a WisataDbHelper instance, pass "this" to the constructor
         // Create a DB helper (this will create the DB if run for the first time)
         WisataDbHelper dbHelper = new WisataDbHelper(this);
 

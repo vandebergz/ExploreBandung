@@ -30,6 +30,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"/>
+
+        <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:name="com.google.android.gms.maps.MapFragment"
+            map:cameraTargetLat="-6.974807"
+            map:cameraTargetLng="107.631052"
+            map:cameraBearing="112.5"
+            map:cameraTilt="65"/>-->
     </LinearLayout>
 
 </RelativeLayout>

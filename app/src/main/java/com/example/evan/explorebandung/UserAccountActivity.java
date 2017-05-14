@@ -29,7 +29,7 @@ public class UserAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_account);
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -58,11 +58,11 @@ public class UserAccountActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         newPassword = (EditText) findViewById(R.id.newPassword);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        /*progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
-        }
+        }*/
 
 
         changePassword.setOnClickListener(new View.OnClickListener() {
@@ -81,17 +81,17 @@ public class UserAccountActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(UserAccountActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
                                             signOut();
-                                            progressBar.setVisibility(View.GONE);
+                                           // progressBar.setVisibility(View.GONE);
                                         } else {
                                             Toast.makeText(UserAccountActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
-                                            progressBar.setVisibility(View.GONE);
+                                           // progressBar.setVisibility(View.GONE);
                                         }
                                     }
                                 });
                     }
                 } else if (newPassword.getText().toString().trim().equals("")) {
                     newPassword.setError("Enter password");
-                    progressBar.setVisibility(View.GONE);
+                    //progressBar.setVisibility(View.GONE);
                 }
             }
         });

@@ -49,7 +49,7 @@ public class WisataDbHelper extends SQLiteOpenHelper {
         String query = "select * from "+WisataContract.WisataEntry.TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()){
             do {

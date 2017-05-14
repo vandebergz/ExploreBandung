@@ -28,7 +28,6 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
         this.dbList = new ArrayList<DatabaseModel>();
         this.context = context;
         this.dbList = dbList;
-
     }
 
     @Override
@@ -38,17 +37,14 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
                 R.layout.wisata_list, null);
 
         // create ViewHolder
-
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(WisataAdapter.ViewHolder holder, int position) {
-
         holder.name.setText(dbList.get(position).getPlace());
-        holder.email.setText(dbList.get(position).getContact());
-
+        holder.contact.setText(dbList.get(position).getContact());
     }
 
     @Override
@@ -58,23 +54,23 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView name,email;
+        public TextView name, contact;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
             name = (TextView) itemLayoutView
                     .findViewById(R.id.name_tv);
-            email = (TextView)itemLayoutView.findViewById(R.id.contact_tv);
+            contact = (TextView)itemLayoutView.findViewById(R.id.contact_tv);
             itemLayoutView.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context,DetailsActivity.class);
+            Intent intent = new Intent(context, DetailsActivity.class);
 
             Bundle extras = new Bundle();
-            extras.putInt("position",getAdapterPosition());
+            extras.putInt("position", getAdapterPosition());
             intent.putExtras(extras);
 
             context.startActivity(intent);
