@@ -6,46 +6,100 @@
     android:layout_height="match_parent"
     tools:context="com.example.evan.explorebandung.MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/upheader"
+        android:id="@+id/imageView2" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_above="@+id/user_account_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="180dp"
+        android:text="FEEL FREE TO EXPLORE !"
+        android:textColor="#fff"
+        android:textSize="8pt"
         android:id="@+id/textView3" />
+
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="30dp"
+        android:src="@drawable/logo"
+        android:id="@+id/imageView" />
 
     <Button
         android:id="@+id/user_account_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USER ACCOUNT"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="265dp"
-        android:layout_above="@+id/signout_button"
+        android:text="EDIT ACCOUNT"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/signout_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN OUT"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="323dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp">
 
-    <Button
-        android:id="@+id/wisata_button"
+        <Button
+            android:id="@+id/mall_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/ic_mall" />
+
+        <Button
+            android:id="@+id/map2_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/ic_airport" />
+
+        <Button
+            android:id="@+id/map4_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/ic_foodmenu" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WISATA"
-        android:layout_below="@+id/signout_button"
-        android:layout_alignLeft="@+id/signout_button"
-        android:layout_alignStart="@+id/signout_button" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/wisata_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_travel" />
+
+        <Button
+            android:id="@+id/map_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_publicmenu" />
+
+    </LinearLayout>
 
 </RelativeLayout>

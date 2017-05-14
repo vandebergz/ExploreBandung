@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnUserAcc, btnSignOut, btnWisata;
+    private Button btnUserAcc, btnMap, btnWisata, btnMall, btnMap2, btnMap4;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
 
@@ -45,21 +45,44 @@ public class MainActivity extends AppCompatActivity {
         };
 
         btnUserAcc = (Button) findViewById(R.id.user_account_button);
-        btnSignOut = (Button) findViewById(R.id.signout_button);
         btnWisata = (Button) findViewById(R.id.wisata_button);
+        btnMall = (Button) findViewById(R.id.mall_button);
+        btnMap = (Button) findViewById(R.id.map_button) ;
+        btnMap2 = (Button) findViewById(R.id.map2_button);
+        btnMap4 = (Button) findViewById(R.id.map4_button);
+
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(MainActivity.this, MapsActivity.class);
+                a.putExtra("NILAI", 1);
+                startActivity(a);
+            }
+        });
+
+        btnMap2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(MainActivity.this, MapsActivity.class);
+                a.putExtra("NILAI", 2);
+                startActivity(a);
+            }
+        });
+
+        btnMap4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(MainActivity.this, MapsActivity.class);
+                a.putExtra("NILAI", 4);
+                startActivity(a);
+            }
+        });
 
         btnUserAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, UserAccountActivity.class);
                 startActivity(i);
-            }
-        });
-
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
             }
         });
 
@@ -70,14 +93,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        btnMall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, WisataActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    //sign out method
-    public void signOut() {
-        auth.signOut();
-    }
-
-        @Override
+    @Override
     public void onStart() {
         super.onStart();
         auth.addAuthStateListener(authListener);

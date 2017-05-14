@@ -2,14 +2,13 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.evan.explorebandung.DetailsActivity">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,6 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Nama Tempat"
             android:textStyle="bold" />
 
@@ -34,6 +34,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Alamat"
             android:textStyle="bold" />
 
@@ -42,6 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Address"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
@@ -50,6 +53,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Jenis Wisata"
             android:textStyle="bold" />
 
@@ -61,7 +65,8 @@
             android:text="Contact"
             android:textColor="@android:color/black" />
 
-        <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_margin="20dp"
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -69,7 +74,7 @@
             map:cameraTargetLat="-6.974807"
             map:cameraTargetLng="107.631052"
             map:cameraBearing="112.5"
-            map:cameraTilt="65"/>-->
+            map:cameraTilt="65"/>
     </LinearLayout>
 
 </RelativeLayout>
