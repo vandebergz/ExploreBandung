@@ -16,7 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_above="@+id/user_account_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp" />
+        android:layout_marginBottom="23dp"
+        android:id="@+id/textView3" />
 
     <Button
         android:id="@+id/user_account_button"
@@ -37,5 +38,14 @@
         tools:layout_editor_absoluteY="323dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/wisata_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WISATA"
+        android:layout_below="@+id/signout_button"
+        android:layout_alignLeft="@+id/signout_button"
+        android:layout_alignStart="@+id/signout_button" />
 
 </RelativeLayout>

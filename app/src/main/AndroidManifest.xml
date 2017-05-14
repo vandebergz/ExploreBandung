@@ -22,7 +22,8 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".UserAccountActivity" />
-        <activity android:name=".data.WisataActivity"></activity>
+        <activity android:name=".WisataActivity" />
+        <activity android:name=".WisataAdapter"></activity>
     </application>
 
 </manifest>

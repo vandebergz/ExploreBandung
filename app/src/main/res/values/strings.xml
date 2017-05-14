@@ -29,4 +29,8 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">Please provide your registered email to send password reset instructions.</string>
+    <string name="default_place_name">Wisata</string>
+    <string name="default_id">20</string>
+    <string name="id_hint">ID</string>
+    <string name="name_hint">Wisata</string>
 </resources>
