@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,12 +29,10 @@ public class UserAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_account);
+        setContentView(R.layout.activity_main);
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
-        changePassword = (Button) findViewById(R.id.changePass);
-        signOut = (Button) findViewById(R.id.sign_out);
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -45,18 +44,35 @@ public class UserAccountActivity extends AppCompatActivity {
                 if (user == null) {
                     // user auth state is changed - user is null
                     // launch login activity
-                    startActivity(new Intent(UserAccountActivity.this, LoginActivity.class));
+                    Intent i = new Intent(UserAccountActivity.this, LoginActivity.class);
+                    startActivity(i);
                     finish();
                 }
             }
         };
 
+        btnChangePassword = (Button) findViewById(R.id.change_password_button);
+        changePassword = (Button) findViewById(R.id.changePass);
+        signOut = (Button) findViewById(R.id.sign_out);
+
+        password = (EditText) findViewById(R.id.password);
+        newPassword = (EditText) findViewById(R.id.newPassword);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
+
+
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //progressBar.setVisibility(View.VISIBLE);
                 if (user != null && !newPassword.getText().toString().trim().equals("")) {
                     if (newPassword.getText().toString().trim().length() < 6) {
                         newPassword.setError("Password too short, enter minimum 6 characters");
+                        progressBar.setVisibility(View.GONE);
                     } else {
                         user.updatePassword(newPassword.getText().toString().trim())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -65,14 +81,17 @@ public class UserAccountActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(UserAccountActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
                                             signOut();
+                                            progressBar.setVisibility(View.GONE);
                                         } else {
                                             Toast.makeText(UserAccountActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
+                                            progressBar.setVisibility(View.GONE);
                                         }
                                     }
                                 });
                     }
                 } else if (newPassword.getText().toString().trim().equals("")) {
                     newPassword.setError("Enter password");
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
@@ -83,11 +102,18 @@ public class UserAccountActivity extends AppCompatActivity {
                 signOut();
             }
         });
+
     }
 
     //sign out method
     public void signOut() {
         auth.signOut();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //progressBar.setVisibility(View.GONE);
     }
 
     @Override

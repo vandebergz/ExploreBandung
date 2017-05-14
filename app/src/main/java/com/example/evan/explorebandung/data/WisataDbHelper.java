@@ -1,8 +1,13 @@
 package com.example.evan.explorebandung.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by evan on 5/13/17.
@@ -36,6 +41,30 @@ public class WisataDbHelper extends SQLiteOpenHelper {
                 WisataContract.WisataEntry.COLUMN_CONTACT + " TEXT NOT NULL" +
                 "); ";
         sqLiteDatabase.execSQL(SQL_CREATE_WISATA_TABLE);
+    }
+
+    /* Retrive  data from database */
+    public List<DatabaseModel> getDataFromDB(){
+        List<DatabaseModel> modelList = new ArrayList<DatabaseModel>();
+        String query = "select * from "+WisataContract.WisataEntry.TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst()){
+            do {
+                DatabaseModel model = new DatabaseModel();
+                model.setPlace(cursor.getString(0));
+                model.setContact(cursor.getString(1));
+                model.setAddress(cursor.getString(3));
+
+                modelList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d("Wisata data", modelList.toString());
+
+        return modelList;
     }
 
     @Override

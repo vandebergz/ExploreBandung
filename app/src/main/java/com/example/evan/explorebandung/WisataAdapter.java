@@ -1,6 +1,7 @@
 package com.example.evan.explorebandung;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,71 +10,76 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.evan.explorebandung.data.DatabaseModel;
 import com.example.evan.explorebandung.data.WisataContract;
 
-public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.WisataViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Cursor mCursor;
-    private Context mContext;
+import static android.R.attr.onClick;
 
-    /**
-     * Constructor using the context and the db cursor
-     *
-     * @param context the calling context/activity
-     * @param cursor  the db cursor with waitlist data to display
-     */
-    public WisataAdapter(Context context, Cursor cursor) {
-        this.mContext = context;
-        this.mCursor = cursor;
+public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder> {
+
+    static   List<DatabaseModel> dbList;
+    static  Context context;
+    WisataAdapter(Context context, List<DatabaseModel> dbList ){
+        this.dbList = new ArrayList<DatabaseModel>();
+        this.context = context;
+        this.dbList = dbList;
+
     }
 
     @Override
-    public WisataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Get the RecyclerView item layout
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.wisata_list, parent, false);
-        return new WisataViewHolder(view);
+    public WisataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.wisata_list, null);
+
+        // create ViewHolder
+
+        ViewHolder viewHolder = new ViewHolder(itemLayoutView);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(WisataViewHolder holder, int position) {
-        // COMPLETED (5) Move the cursor to the passed in position, return if moveToPosition returns false
-        // Move the mCursor to the position of the item to be displayed
-        if (!mCursor.moveToPosition(position))
-            return; // bail if returned null
-        // COMPLETED (6) Call getString on the cursor to get the guest's name
-        String name = mCursor.getString(mCursor.getColumnIndex(WisataContract.WisataEntry.COLUMN_PLACE));
-        // COMPLETED (7) Call getInt on the cursor to get the party size
-        String wisataId = mCursor.getString(mCursor.getColumnIndex(WisataContract.WisataEntry.COLUMN_PLACE));
-        // COMPLETED (8) Set the holder's nameTextView text to the guest's name
-        // Display the guest name
-        holder.nameTextView.setText(name);
-        // COMPLETED (9) Set the holder's partySizeTextView text to the party size
-        // Display the party count
-        holder.partySizeTextView.setText(wisataId);
+    public void onBindViewHolder(WisataAdapter.ViewHolder holder, int position) {
+
+        holder.name.setText(dbList.get(position).getPlace());
+        holder.email.setText(dbList.get(position).getContact());
+
     }
 
     @Override
     public int getItemCount() {
-        // COMPLETED (4) Update the getItemCount to return the getCount of the cursor
-        return mCursor.getCount();
+        return dbList.size();
     }
 
-    /**
-     * Inner class to hold the views needed to display a single item in the recycler-view
-     */
-    class WisataViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // Will display the guest name
-        TextView nameTextView;
-        // Will display the party size number
-        TextView partySizeTextView;
+        public TextView name,email;
 
-        public WisataViewHolder(View itemView) {
-            super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.name_text_view);
-            partySizeTextView = (TextView) itemView.findViewById(R.id.id_text_view);
+        public ViewHolder(View itemLayoutView) {
+            super(itemLayoutView);
+            name = (TextView) itemLayoutView
+                    .findViewById(R.id.name_tv);
+            email = (TextView)itemLayoutView.findViewById(R.id.contact_tv);
+            itemLayoutView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context,DetailsActivity.class);
+
+            Bundle extras = new Bundle();
+            extras.putInt("position",getAdapterPosition());
+            intent.putExtras(extras);
+
+            context.startActivity(intent);
+            Toast.makeText(WisataAdapter.context, "You have clicked row number "
+                    + getAdapterPosition(), Toast.LENGTH_LONG).show();
         }
     }
 }

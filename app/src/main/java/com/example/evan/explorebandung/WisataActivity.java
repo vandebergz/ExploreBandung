@@ -13,8 +13,14 @@ import com.example.evan.explorebandung.data.InsertUtil;
 import com.example.evan.explorebandung.data.WisataContract;
 import com.example.evan.explorebandung.data.WisataDbHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.example.evan.explorebandung.data.DatabaseModel;
+
 public class WisataActivity extends AppCompatActivity {
 
+    WisataDbHelper helper;
+    List<DatabaseModel> dbList;
     private WisataAdapter mAdapter;
     private SQLiteDatabase mDb;
     private Button btnAdd;
@@ -36,22 +42,17 @@ public class WisataActivity extends AppCompatActivity {
         // Create a DB helper (this will create the DB if run for the first time)
         WisataDbHelper dbHelper = new WisataDbHelper(this);
 
-        // COMPLETED (3) Get a writable database reference using getWritableDatabase and store it in mDb
-        // Keep a reference to the mDb until paused or killed. Get a writable database
-        // because you will be adding restaurant customers
+        helper = new WisataDbHelper(this);
+        dbList= new ArrayList<DatabaseModel>();
+        dbList = helper.getDataFromDB();
 
         mDb = dbHelper.getWritableDatabase();
 
-        // COMPLETED (4) call insertFakeData in TestUtil and pass the database reference mDb
-        //Fill the database with fake data
         InsertUtil.insertData(mDb);
 
-        // COMPLETED (7) Run the getAllGuests function and store the result in a Cursor variable
         Cursor cursor = getAllWisata();
 
-        // COMPLETED (12) Pass the resulting cursor count to the adapter
-        // Create an adapter for that cursor to display the data
-        mAdapter = new WisataAdapter(this, cursor);
+        mAdapter = new WisataAdapter(this, dbList);
 
         // Link the adapter to the RecyclerView
         wisataRecyclerView.setAdapter(mAdapter);
