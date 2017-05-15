@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class UserAccountActivity extends AppCompatActivity {
 
-    private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
+    private Button btnChangeEmail, btnSendResetEmail, btnRemoveUser,
             changeEmail, changePassword, sendEmail, remove, signOut;
 
     private EditText password, newPassword;
@@ -51,7 +51,6 @@ public class UserAccountActivity extends AppCompatActivity {
             }
         };
 
-        btnChangePassword = (Button) findViewById(R.id.change_password_button);
         changePassword = (Button) findViewById(R.id.changePass);
         signOut = (Button) findViewById(R.id.sign_out);
 
